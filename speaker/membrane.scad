@@ -13,7 +13,7 @@ lent = 100;  //points & angles number
 tol= 0.1;   //tolerance
 thic = 2;   //thickness
 scrwqnt = 20; //screws number
-//polygon
+//sine-polygon
 DotArrUP=[ for (i = [0 : 1 : lent]) [0.5*(DM-dm)*i/lent, thic/2+0.5*Amp*sin(nCurv*360*i/lent)] ];
 DotArrDW=[ for (i = [0 : 1 : lent]) [0.5*(DM-dm)*(lent-i)/lent, -thic/2+0.5*Amp*sin(nCurv*360*(lent-i)/lent)] ];
 difference() {

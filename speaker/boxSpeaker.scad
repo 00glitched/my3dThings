@@ -16,7 +16,6 @@ xlen = prop*Dm;
 ylen = prop*Dm;
 zlen = prop*Dm;
 screwQuant = 8;
-
 difference()
 {
     cube([xlen+2*width, ylen+2*width, zlen],center = true);
