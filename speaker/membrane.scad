@@ -1,3 +1,4 @@
+module membrane(){
 //const
 pi = 3.141592653;
 //diameters
@@ -11,7 +12,7 @@ nCurv = 3;  //waves(sine)
 lent = 100;  //points & angles number
 //general conf.
 tol= 0.1;   //tolerance
-thic = 2;   //thickness
+thic = 1;   //thickness
 scrwqnt = 20; //screws number
 //sine-polygon
 DotArrUP=[ for (i = [0 : 1 : lent]) [0.5*(DM-dm)*i/lent, thic/2+0.5*Amp*sin(nCurv*360*i/lent)] ];
@@ -34,3 +35,4 @@ for(i=[0:1:scrwqnt-1])
             }
         }
     }
+}

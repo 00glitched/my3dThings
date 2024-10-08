@@ -1,7 +1,8 @@
+module boxSpeaker2(){
 //const
 pi = 3.141592653;
 //diameters
-sDM = 70;  //speaker
+sDM = 93;  //speaker
 mDM = 100;  //membrane
 mDMo = 120; //memb-borders
 sdm = 2;    //Screw
@@ -15,13 +16,25 @@ thic = 5;   //thickness
 scrwqnt = 20; //screws number
 DotArrUP=[ for (i = [0 : 1 : lent]) [0.5*DM*sin(180*i/lent), 0.5*dm*cos(180*i/lent)] ];
 DotArrDW=[ for (i = [0 : 1 : lent]) [0.5*(DM-2*thic)*sin(180*i/lent), 0.5*(dm-2*thic)*cos(180*i/lent)] ];
-rotate_extrude($fn=lent){
-    difference(){
-        polygon(concat(DotArrUP,DotArrDW));
-        translate([0,sDM/2,0])
-        square([mDMo,dm+tol],center=true);
-        translate([0,-sDM/2,0])
-        square([sDM,dm+tol],center=true);}
-    translate([(mDM+mDMo)/4, 0.5*(dm*sqrt(1-mDMo^2/DM^2)-thic), 0])
-        square([(mDMo-mDM)/2,thic],center=true);}
-        
+difference(){
+    rotate_extrude($fn=lent){
+        difference(){
+            polygon(concat(DotArrUP,DotArrDW));
+            translate([0,sDM/2,0])
+            square([mDMo,dm+tol],center=true);
+            translate([0,-sDM/2,0])
+            square([sDM,dm+tol],center=true);}
+        translate([(mDM+mDMo)/4, 0.5*(dm*sqrt(1-(mDMo/DM)^2)-thic), 0])
+            square([(mDMo-mDM)/2,thic],center=true);}
+    for(i=[0:1:scrwqnt-1])
+        {
+            rotate([0,0,i*360/scrwqnt])
+            {
+                translate([0,(mDM+mDMo)/4,0.5*(dm*sqrt(1-(mDMo/DM)^2))])
+                {
+                    cylinder(h=thic+tol, d=sdm, center=true, $fn=lent);
+                }
+            }
+        }
+    }
+}
