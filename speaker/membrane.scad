@@ -2,14 +2,15 @@ module membrane(){
 //const
 pi = 3.141592653;
 //diameters
-dm = 20;    //in-wave
-DM = 100;   //out-wave
-DMo = 120;  //out
+dm = 0.8*76;    //in-wave
+DM = 76;   //out-wave
+DMo = 76+20;  //out
 DsH = 2;    //Screw
 //wave eq.
-Amp = 6;    //amplitude
-nCurv = 3;  //waves(sine)
+Amp = 4;    //amplitude
+nCurv = 2;  //waves(sine)
 lent = 100;  //points & angles number
+lents = 10;  //for screw
 //general conf.
 tol= 0.1;   //tolerance
 thic = 1;   //thickness
@@ -30,7 +31,7 @@ for(i=[0:1:scrwqnt-1])
             {
                 translate([0,(DMo+DM)/4,0])
                 {
-                    cylinder(h=thic+Amp+tol, d=DsH, center=true, $fn=lent);
+                    cylinder(h=thic+Amp+tol, d=DsH, center=true, $fn=lents);
                 }
             }
         }

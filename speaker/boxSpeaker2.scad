@@ -3,11 +3,12 @@ module boxSpeaker2(){
 pi = 3.141592653;
 //diameters
 sDM = 93;  //speaker
-mDM = 100;  //membrane
-mDMo = 120; //memb-borders
+mDM = 76;  //membrane
+mDMo = 76+20; //memb-borders
 sdm = 2;    //Screw
 //elipse eq.
 lent = 100;  //points & angles number
+lents = 10;  //for screw
 dm = 100;    //z diam.
 DM = 200;    //x,y diam.
 //general conf.
@@ -32,7 +33,7 @@ difference(){
             {
                 translate([0,(mDM+mDMo)/4,0.5*(dm*sqrt(1-(mDMo/DM)^2))])
                 {
-                    cylinder(h=thic+tol, d=sdm, center=true, $fn=lent);
+                    cylinder(h=thic+tol, d=sdm, center=true, $fn=lents);
                 }
             }
         }
