@@ -12,11 +12,14 @@ tpD=34;
 
 //heigts
 hlH=20;
-tpH=4;
+tpH=3;
 
 //sides
 flngY = 38;
 flngX = 35*2;
+
+//limits
+// [108,38,20] [mm]
 
 color([.5,.7,.7])
 difference(){
@@ -37,7 +40,7 @@ union(){
             polygon([[0,0],[(flngX+flngY/2)/2,0],[0,(hlH-tpH)/cos(40)]]);
             }}}
     // less:
-    translate([0,0,-tol/2]) cylinder(h=tpH+hlH+tol,r=hlDin/2,$fn=lent);
+    translate([0,0,-tol/2]) cylinder(h=tpH+hlH+tol,r=tol+hlDin/2,$fn=lent);
     translate([-flngX/2,0,-tol/2]) cylinder(h=tpH+hlH+tol,r=scwD/2,$fn=lenth);
     translate([flngX/2,0,-tol/2]) cylinder(h=tpH+hlH+tol,r=scwD/2,$fn=lenth);
     translate([0,0,hlH]) cylinder(h=tpH+hlH,r=hlDout/2,$fn=lent);
@@ -46,4 +49,3 @@ union(){
         }
     }
 }
-scrwthrd();
